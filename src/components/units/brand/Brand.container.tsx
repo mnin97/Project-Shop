@@ -4,10 +4,10 @@ import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../commons/types/generated/types";
-import MainPageUI from "./Main.presenter";
-import { FETCH_USED_ITEMS } from "./Main.queries";
+import MainPageUI from "./Brand.presenter";
+import { FETCH_USED_ITEMS } from "./Brand.queries";
 
-export default function MainPage() {
+export default function BrandPage() {
   const router = useRouter();
   const { data, fetchMore } = useQuery<
     Pick<IQuery, "fetchUseditems">,
@@ -35,7 +35,7 @@ export default function MainPage() {
 
   const onClickMoveToDetail = (event) => {
     console.log(event.currentTarget.id);
-    void router.push(`/main/${event.currentTarget.id}`);
+    void router.push(`/brand/${event.currentTarget.id}`);
   };
 
   return (

@@ -8,18 +8,21 @@ import { RecoilRoot } from "recoil";
 import Layout from "../src/components/commons/layout";
 import { globalStyles } from "../styles/globalStyles";
 import MainPage from "../src/components/units/main/Main.container";
+import ApolloSetting from "../src/components/apollo";
 function MyApp({ Component, pageProps }: AppProps) {
   const qqq = 3;
 
   return (
     <div>
       <RecoilRoot>
-        <>
-          <Global styles={globalStyles} />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </>
+        <ApolloSetting>
+          <>
+            <Global styles={globalStyles} />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </>
+        </ApolloSetting>
       </RecoilRoot>
     </div>
   );

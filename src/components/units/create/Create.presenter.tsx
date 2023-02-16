@@ -27,7 +27,7 @@ import {
   Wrapper,
 } from "./Create.style";
 
-export default function CreateUI() {
+export default function CreateUI(props) {
   const modules = {
     toolbar: [
       [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -47,28 +47,45 @@ export default function CreateUI() {
     <>
       <Wrapper>상품등록</Wrapper>
       <ProductName>
-        상품명 <ProductNameInput placeholder="상품명을 작성해주세요" />
+        상품명{" "}
+        <ProductNameInput
+          placeholder="상품명을 작성해주세요"
+          onChange={props.onChangeName}
+        />
       </ProductName>
       <ProductSummary>
-        상품요약 <ProductSummaryInput placeholder="상품요약을 작성해주세요" />
+        상품요약{" "}
+        <ProductSummaryInput
+          placeholder="상품요약을 작성해주세요"
+          onChange={props.onChangeRemarks}
+        />
       </ProductSummary>
       <ProductContents>
         상품내용{" "}
         <ReactQuillMan
           modules={modules}
           placeholder="상품을 설명해주세요."
+          onChange={props.onChangeContents}
         ></ReactQuillMan>
       </ProductContents>
       <ProductPrice>
-        판매가격 <ProductPriceInput placeholder="판매 가격을 입력해주세요" />
+        판매가격{" "}
+        <ProductPriceInput
+          placeholder="판매 가격을 입력해주세요"
+          onChange={props.onChangePrice}
+        />
       </ProductPrice>
       <ProductTag>
-        태그입력 <ProductTagInput placeholder="#태그 #태그 #태그" />
+        태그입력{" "}
+        <ProductTagInput
+          placeholder="#태그 #태그 #태그"
+          onChange={props.onChangeTags}
+        />
       </ProductTag>
       <MapPosition>
         브랜드위치
         <img
-          src="./map.png"
+          src="/map.png"
           style={{ width: "300px", height: "200px", marginTop: "20px" }}
         />
         <MapSearchWrapper>
@@ -82,15 +99,15 @@ export default function CreateUI() {
       </MapPosition>
       <ImageUpload>
         사진첨부
-        <ShowImage src="./image box.png" />
-        <ImageDelete src="Vector.png" />
-        <UploadImage src="./image 최소 box.png" />
-        <UploadButton src="./Upload.png" />
-        <UploadCancel src="./Vector2.png" />
+        <ShowImage src="/image box.png" />
+        <ImageDelete src="/Vector.png" />
+        <UploadImage src="/image 최소 box.png" />
+        <UploadButton src="/Upload.png" />
+        <UploadCancel src="/Vector2.png" />
       </ImageUpload>
       <CreateButtonWrapper>
         <CancelButton>취소</CancelButton>
-        <CreateButton>등록</CreateButton>
+        <CreateButton onClick={props.onClickSubmit}>등록</CreateButton>
       </CreateButtonWrapper>
     </>
   );

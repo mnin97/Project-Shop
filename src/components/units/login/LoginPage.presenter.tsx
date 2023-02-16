@@ -43,11 +43,17 @@ export default function LoginPageUI(props: any) {
         <InputWrapper>
           <InputBox>
             <IdBox>아이디</IdBox>
-            <LoginInput placeholder="이메일 아이디를 @까지 정확하게 입력하세요" />
+            <LoginInput
+              placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
+              onChange={props.onChangeEmail}
+            />
             <PBox>비밀번호</PBox>
-            <LoginInput placeholder="영문+숫자 조합 8~16자리를 입력해주세요" />
+            <LoginInput
+              placeholder="영문+숫자 조합 8~16자리를 입력해주세요"
+              onChange={props.onChangePassword}
+            />
           </InputBox>
-          <LoginButton>로그인</LoginButton>
+          <LoginButton onClick={props.onClickLogin}>로그인</LoginButton>
         </InputWrapper>
       </LoginBackground>
     </>

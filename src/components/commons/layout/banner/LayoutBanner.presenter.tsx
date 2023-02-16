@@ -3,11 +3,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export default function LayoutBannerUI() {
+export default function LayoutBannerUI(props: any) {
   return (
     <Wrapper>
       <NavigationBox>
-        <Navigation>BRAND</Navigation>
+        <Navigation onClick={props.onClickLogo}>BRAND</Navigation>
         <Navigation>CATEGORY</Navigation>
         <Navigation>LIFE</Navigation>
         <Navigation>BEAUTY</Navigation>

@@ -11,9 +11,14 @@ export const ListWrapperMain = styled.div`
 `;
 
 export const Carrusel = styled.div`
-  width: 100%;
+  width: 1864px;
   height: 600px;
-  background-color: #c4c4c4;
+  border: none;
+  margin-top: 15px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  background-color: #d3d3d3;
 `;
 
 export const Arrival = styled.p`

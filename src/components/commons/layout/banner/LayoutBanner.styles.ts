@@ -21,4 +21,5 @@ export const Navigation = styled.span`
   line-height: 22px;
   color: #ffffff;
   margin-left: 70px;
+  cursor: pointer;
 `;

@@ -1,10 +1,9 @@
 import styled from "@emotion/styled";
 import dynamic from "next/dynamic";
-import ReactQuill from "react-quill";
+// import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-const QuillWrapper = dynamic(() => import("react-quill"), {
+const ReactQuill = dynamic(() => import("react-quill"), {
   ssr: false,
-  loading: () => <p>Loading ...</p>,
 });
 
 export const Wrapper = styled.div`
@@ -76,7 +75,7 @@ export const ProductContents = styled.div`
   padding-bottom: 30px;
 `;
 
-export const ReactQuillMan = styled(QuillWrapper)`
+export const ReactQuillMan = styled(ReactQuill)`
   bottom: 50px;
   width: 80%;
   height: 250px;

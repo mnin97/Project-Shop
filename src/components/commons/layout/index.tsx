@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
-import LayoutHeader from "./header/LayoutHeader.Container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
 import { useRouter } from "next/router";
+import LayoutHeader from "./header/LayoutHeader.container";
 const Body = styled.div`
   display: flex;
   flex-direction: column;

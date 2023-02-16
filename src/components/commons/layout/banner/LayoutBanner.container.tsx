@@ -1,5 +1,12 @@
+import { useRouter } from "next/router";
 import LayoutBannerUI from "./LayoutBanner.presenter";
 
 export default function LayoutBanner() {
-  return <LayoutBannerUI />;
+  const router = useRouter();
+
+  const onClickLogo = () => {
+    router.push("/brand");
+  };
+
+  return <LayoutBannerUI onClickLogo={onClickLogo} />;
 }
