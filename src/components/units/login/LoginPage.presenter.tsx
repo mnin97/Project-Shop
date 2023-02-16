@@ -29,7 +29,7 @@ export default function LoginPageUI(props: any) {
         <BannerTitle>#STYLE</BannerTitle>
         <BannerTitle>EVENT</BannerTitle>
         <BannerTitle>BEST</BannerTitle>
-        <MoveCartJoin>회원가입</MoveCartJoin>
+        <MoveCartJoin onClick={props.onClickJoin}>회원가입</MoveCartJoin>
         <CartBox>
           <MoveCartJoin>장바구니</MoveCartJoin>
         </CartBox>

@@ -56,6 +56,10 @@ export default function LoginPage() {
     }
   };
 
+  const onClickJoin = () => {
+    router.push("./join");
+  };
+
   const router = useRouter();
   const onClickLogo = () => {
     router.push("/main");
@@ -67,6 +71,7 @@ export default function LoginPage() {
         onChangeEmail={onChangeEmail}
         onChangePassword={onChangePassword}
         onClickLogin={onClickLogin}
+        onClickJoin={onClickJoin}
       ></LoginPageUI>
     </>
   );

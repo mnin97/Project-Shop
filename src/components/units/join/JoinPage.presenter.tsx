@@ -35,7 +35,7 @@ export default function JoinPageUI(props: any) {
         <BannerTitle>#STYLE</BannerTitle>
         <BannerTitle>EVENT</BannerTitle>
         <BannerTitle>BEST</BannerTitle>
-        <MoveCartJoin>로그인</MoveCartJoin>
+        <MoveCartJoin onClick={props.onClickLogin}>로그인</MoveCartJoin>
         <MoveCartJoin2>장바구니</MoveCartJoin2>
       </Banner>
       <LoginBackground>

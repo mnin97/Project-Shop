@@ -6,5 +6,14 @@ export default function JoinPage() {
   const onClickLogo = () => {
     router.push("/main");
   };
-  return <JoinPageUI onClickLogo={onClickLogo}></JoinPageUI>;
+
+  const onClickLogin = () => {
+    router.push("./Login");
+  };
+  return (
+    <JoinPageUI
+      onClickLogo={onClickLogo}
+      onClickLogin={onClickLogin}
+    ></JoinPageUI>
+  );
 }
