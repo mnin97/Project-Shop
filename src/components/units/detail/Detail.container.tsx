@@ -1,5 +1,6 @@
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import {
   IQuery,
   IQueryFetchUseditemArgs,
@@ -22,6 +23,15 @@ export const FETCH_USED_ITEM = gql`
 `;
 
 export default function Detail() {
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+  const onClickMoveToBoardEdit = () => {
+    if (typeof router.query.productId !== "string") {
+      alert("올바르지 않은 게시글 아이디입니다.");
+      return;
+    }
+
+    void router.push(`/main/${router.query.productId}/edit`);
+  };
   const router = useRouter();
 
   const { data } = useQuery<
@@ -30,6 +40,20 @@ export default function Detail() {
   >(FETCH_USED_ITEM, {
     variables: { useditemId: String(router.query.productId) },
   });
+  console.log(data);
 
-  return <DetailUI data={data}></DetailUI>;
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  return (
+    <DetailUI
+      data={data}
+      onClickMoveToBoardEdit={onClickMoveToBoardEdit}
+      fileUrls={fileUrls}
+      onChangeFileUrls={onChangeFileUrls}
+    ></DetailUI>
+  );
 }

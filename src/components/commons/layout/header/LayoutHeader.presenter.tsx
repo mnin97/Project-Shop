@@ -14,7 +14,6 @@ export default function LayoutHeaderUI(props: any) {
         <InnerLogo onClick={props.onClickLogo}>DINGCO</InnerLogo>
         <div>
           <InnerButton onClick={props.onClickMoveToLogin}>
-            {" "}
             {props.data?.fetchUserLoggedIn.name === undefined
               ? "로그인"
               : props.data?.fetchUserLoggedIn.name}

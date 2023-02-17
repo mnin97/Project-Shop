@@ -11,26 +11,50 @@ export const ListWrapperMain = styled.div`
 `;
 
 export const Carrusel = styled.div`
-  width: 1864px;
-  height: 600px;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 620px;
   border: none;
   margin-top: 15px;
-  margin-left: 20px;
+
   display: flex;
+
   flex-direction: row;
   background-color: #d3d3d3;
 `;
 
 export const Arrival = styled.p`
   font-weight: 700;
-  padding: 50px;
+  padding-left: 200px;
+  padding-top: 25px;
+
   font-size: 22px;
-  text-align: center;
+
   color: #000000;
+  border-bottom: 1px solid #555555;
+  width: 89%;
+  position: relative;
+  left: 126px;
+  padding-bottom: 37px;
+`;
+
+export const SubmitButton = styled.p`
+  border: 1px solid #000000;
+  background: #ffffff;
+  position: relative;
+  width: 150px;
+  height: 60px;
+  right: 198px;
+  top: 21px;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  padding-top: 19px;
 `;
 
 export const ListWrapper = styled.div`
-  margin-right: 80px;
+  margin-right: 44px;
   width: 300px;
 `;
 
@@ -85,4 +109,14 @@ export const Status = styled.p`
 export const HeartIcon = styled(HeartOutlined)`
   margin-left: 260px;
   margin-top: 20px;
+`;
+
+export const InfiniteWrapper = styled.div`
+  width: 100%;
+
+  overflow: auto;
+`;
+
+export const NoImageUploadWrapper = styled.img`
+  width: 600px;
 `;

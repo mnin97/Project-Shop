@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Uploads01 from "../../commons/layout/01/Uploads01.container";
 import {
   AddressInput,
   AddressInputWrapper,
@@ -45,12 +47,13 @@ export default function CreateUI(props) {
   };
   return (
     <>
-      <Wrapper>상품등록</Wrapper>
+      <Wrapper>{props.isEdit ? "상품 수정" : "상품 등록"}</Wrapper>
       <ProductName>
         상품명{" "}
         <ProductNameInput
           placeholder="상품명을 작성해주세요"
           onChange={props.onChangeName}
+          defaultValue={props.data?.fetchUseditem.name}
         />
       </ProductName>
       <ProductSummary>
@@ -58,6 +61,7 @@ export default function CreateUI(props) {
         <ProductSummaryInput
           placeholder="상품요약을 작성해주세요"
           onChange={props.onChangeRemarks}
+          defaultValue={props.data?.fetchUseditem.remarks}
         />
       </ProductSummary>
       <ProductContents>
@@ -66,6 +70,7 @@ export default function CreateUI(props) {
           modules={modules}
           placeholder="상품을 설명해주세요."
           onChange={props.onChangeContents}
+          defaultValue={props.data?.fetchUseditem.contents}
         ></ReactQuillMan>
       </ProductContents>
       <ProductPrice>
@@ -73,6 +78,7 @@ export default function CreateUI(props) {
         <ProductPriceInput
           placeholder="판매 가격을 입력해주세요"
           onChange={props.onChangePrice}
+          defaultValue={props.data?.fetchUseditem.price ?? ""}
         />
       </ProductPrice>
       <ProductTag>
@@ -80,6 +86,7 @@ export default function CreateUI(props) {
         <ProductTagInput
           placeholder="#태그 #태그 #태그"
           onChange={props.onChangeTags}
+          defaultValue={props.data?.fetchUseditem.tags}
         />
       </ProductTag>
       <MapPosition>
@@ -99,15 +106,22 @@ export default function CreateUI(props) {
       </MapPosition>
       <ImageUpload>
         사진첨부
-        <ShowImage src="/image box.png" />
-        <ImageDelete src="/Vector.png" />
-        <UploadImage src="/image 최소 box.png" />
-        <UploadButton src="/Upload.png" />
-        <UploadCancel src="/Vector2.png" />
+        {props.fileUrls.slice(0, 1).map((el: any, index: any) => (
+          <Uploads01
+            key={el}
+            index={index}
+            fileUrl={el}
+            onChangeFileUrls={props.onChangeFileUrls}
+          />
+        ))}
       </ImageUpload>
       <CreateButtonWrapper>
         <CancelButton>취소</CancelButton>
-        <CreateButton onClick={props.onClickSubmit}>등록</CreateButton>
+        <CreateButton
+          onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+        >
+          {props.isEdit ? "수정하기" : "등록하기"}
+        </CreateButton>
       </CreateButtonWrapper>
     </>
   );

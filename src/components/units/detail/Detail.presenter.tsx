@@ -33,6 +33,7 @@ import {
   MainInput,
   MapPosition,
   MyPage,
+  NoImageUploadWrapper,
   Price,
   PriceName,
   ProductDes,
@@ -47,19 +48,24 @@ import {
 } from "./Detail.style";
 
 export default function DetailUI(props) {
+  console.log(props.data?.fetchUseditem.images === "");
   return (
     <>
       <Wrapper>
-        <ImageUpload src="/Rectangle 20.png" />
-        {/* <ImageWrapper>
-          {props.data?.fetchUseditem.images.map((el: string) => (
-            <ImageUpload
-              key={el}
-              src={`https://storage.googleapis.com/${el}`}
-            />
-          ))}
-        </ImageWrapper> */}
-
+        <ImageWrapper>
+          {props.data?.fetchUseditem.images
+            .slice(0, 1)
+            .map((el: string) =>
+              props.data?.fetchUseditem.images[0] === "" ? (
+                <NoImageUploadWrapper src="/imageBox.png" />
+              ) : (
+                <ImageUpload
+                  key={el}
+                  src={`https://storage.googleapis.com/${el}`}
+                />
+              )
+            )}
+        </ImageWrapper>
         <TitleWrapper>
           <Category>AVANDRESS</Category>
           <ProductName>
@@ -115,7 +121,11 @@ export default function DetailUI(props) {
         에이블리 고객센터를 통해 부탁드립니다. 상품불량에 의한 반품,교환, A/S,
         환불, 품질보증 및 피해보상 등에 관한 사항은
         소비자분쟁해결기준(공정거래위원회 고시)에 따라 받으실 수 있습니다.
+        <div>
+          <button onClick={props.onClickMoveToBoardEdit}>수정하기</button>
+        </div>
       </ExplainMan>
+
       <Ques>
         <p>Q & A</p>
       </Ques>

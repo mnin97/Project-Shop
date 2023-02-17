@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { HeartOutlined } from "@ant-design/icons";
 
 export const ListWrapperMain = styled.div`
-  width: 100%;
+  width: 1600px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,7 +12,7 @@ export const ListWrapperMain = styled.div`
 
 export const Carrusel = styled.div`
   width: 100%;
-  height: 600px;
+  height: 400px;
   background-color: #c4c4c4;
 `;
 
@@ -25,7 +25,7 @@ export const Arrival = styled.p`
 `;
 
 export const ListWrapper = styled.div`
-  margin-right: 80px;
+  margin-right: 30px;
   width: 300px;
 `;
 
@@ -78,6 +78,7 @@ export const Status = styled.p`
 `;
 
 export const HeartIcon = styled(HeartOutlined)`
-  margin-left: 260px;
-  margin-top: 20px;
+  position: relative;
+  left: 303px;
+  bottom: 406px;
 `;

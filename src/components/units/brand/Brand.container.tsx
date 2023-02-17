@@ -35,7 +35,11 @@ export default function BrandPage() {
 
   const onClickMoveToDetail = (event) => {
     console.log(event.currentTarget.id);
-    void router.push(`/brand/${event.currentTarget.id}`);
+    void router.push(`/main/${event.currentTarget.id}`);
+  };
+
+  const onClickMoveToSubmit = () => {
+    void router.push("/main/new");
   };
 
   return (
@@ -43,6 +47,7 @@ export default function BrandPage() {
       data={data}
       onLoadMore={onLoadMore}
       onClickMoveToDetail={onClickMoveToDetail}
+      onClickMoveToSubmit={onClickMoveToSubmit}
     />
   );
 }

@@ -48,19 +48,28 @@ export default function JoinPageUI(props: any) {
           <InputWrapper>
             <InputBox>
               <IdBox>아이디</IdBox>
-              <LoginInput placeholder="이메일 아이디를 @까지 정확하게 입력하세요" />
+              <LoginInput
+                placeholder="이메일 아이디를 @까지 정확하게 입력하세요"
+                onChange={props.onChangeEmail}
+              />
               <PBox>비밀번호</PBox>
-              <LoginInput placeholder="영문+숫자 조합 8~16자리를 입력해주세요" />
+              <LoginInput
+                placeholder="영문+숫자 조합 8~16자리를 입력해주세요"
+                onChange={props.onChangePassword}
+              />
               <PBox2>비밀번호 확인</PBox2>
-              <LoginInput placeholder="영문+숫자 조합 8~16자리를 입력해주세요" />
-              <NameBox>이름</NameBox>
+              <LoginInput
+                placeholder="영문+숫자 조합 8~16자리를 입력해주세요"
+                onChange={props.onChangePassword}
+              />
+              <NameBox onChange={props.onChangeName}>이름</NameBox>
               <LoginInput placeholder="Ex) 홍길동" />
             </InputBox>
           </InputWrapper>
         </InputBigWrapper>
         <ButtonWrapper>
           <CancelButton>취소</CancelButton>
-          <CheckButton>확인</CheckButton>
+          <CheckButton onClick={props.createUserSubmit}>확인</CheckButton>
         </ButtonWrapper>
       </LoginBackground>
     </>

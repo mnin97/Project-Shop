@@ -2,10 +2,12 @@ import { gql, useMutation } from "@apollo/client";
 import { Modal } from "antd";
 
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import {
   IMutation,
   IMutationCreateUseditemArgs,
+  IMutationUpdateUseditemArgs,
+  IUpdateUseditemInput,
 } from "../../../commons/types/generated/types";
 
 import CreateUI from "./Create.presenter";
@@ -24,11 +26,57 @@ const CREATE_USED_ITEM = gql`
   }
 `;
 
-export default function Create() {
+const UPDATE_USED_ITEM = gql`
+  mutation updateUseditem(
+    $useditemId: ID!
+    $updateUseditemInput: UpdateUseditemInput!
+  ) {
+    updateUseditem(
+      useditemId: $useditemId
+      updateUseditemInput: $updateUseditemInput
+    ) {
+      _id
+      name
+      remarks
+      contents
+      price
+      tags
+      images
+    }
+  }
+`;
+
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
+    }
+  }
+`;
+
+export default function Create(props) {
+  const [fileUrls, setFileUrls] = useState(["", "", ""]);
+
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
+  };
+
+  useEffect(() => {
+    if (props.data?.fetchUseditem.images?.length) {
+      setFileUrls([...props.data?.fetchUseditem.images]);
+    }
+  }, [props.data]);
   const [createUseditem] = useMutation<
     Pick<IMutation, "createUseditem">,
     IMutationCreateUseditemArgs
   >(CREATE_USED_ITEM);
+
+  const [updateUseditem] = useMutation<
+    Pick<IMutation, "updateUseditem">,
+    IMutationUpdateUseditemArgs
+  >(UPDATE_USED_ITEM);
 
   const router = useRouter();
 
@@ -48,6 +96,7 @@ export default function Create() {
             price: Number(price),
             tags: tags,
             contents: contents,
+            images: [...fileUrls],
           },
         },
       });
@@ -58,6 +107,41 @@ export default function Create() {
     }
   };
 
+  const onClickUpdate = async (event: string) => {
+    // if (
+    //   !data.name &&
+    //   !data.remarks &&
+    //   !data.contents &&
+    //   !data.price &&
+    //   !data.tags &&
+    //   !data.images &&
+    //   !data.isChangedFiles
+    // ) {
+    //   alert("수정한 내용이 없습니다.");
+    //   return;
+    // }
+
+    const updateUseditemInput: IUpdateUseditemInput = {};
+    if (name) updateUseditemInput.name = name;
+    if (remarks) updateUseditemInput.remarks = remarks;
+    if (contents) updateUseditemInput.contents = contents;
+    if (price) updateUseditemInput.price = Number(price);
+    if (tags) updateUseditemInput.tags = tags;
+    // if (data.images) updateUseditemInput.images = data.images;
+
+    try {
+      const result = await updateUseditem({
+        variables: {
+          updateUseditemInput,
+          useditemId: String(router.query.productId),
+        },
+      });
+      console.log(result);
+      void router.push(`/main/${router.query.productId}`);
+    } catch (error) {
+      if (error instanceof Error) alert(error.message);
+    }
+  };
   const onChangeName = (event: any) => {
     setName(event.currentTarget.value);
   };
@@ -81,12 +165,17 @@ export default function Create() {
   return (
     <>
       <CreateUI
+        isEdit={props.isEdit}
+        data={props.data}
         onClickSubmit={onClickSubmit}
         onChangeName={onChangeName}
         onChangeTags={onChangeTags}
         onChangeRemarks={onChangeRemarks}
         onChangeContents={onChangeContents}
         onChangePrice={onChangePrice}
+        onClickUpdate={onClickUpdate}
+        onChangeFileUrls={onChangeFileUrls}
+        fileUrls={fileUrls}
       ></CreateUI>
     </>
   );

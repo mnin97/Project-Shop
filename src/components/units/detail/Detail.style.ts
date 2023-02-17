@@ -3,7 +3,7 @@ import { ssrEntries } from "next/dist/build/webpack/plugins/middleware-plugin";
 
 export const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   padding: 40px;
 `;
@@ -17,9 +17,13 @@ export const ImageUpload = styled.img`
   width: 600px;
 `;
 
+export const NoImageUploadWrapper = styled.img`
+  width: 600px;
+`;
+
 export const TitleWrapper = styled.div`
-  position: relative;
-  left: 164px;
+  position: absolute;
+  left: 809px;
 `;
 
 export const Category = styled.h4`

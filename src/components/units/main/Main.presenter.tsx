@@ -14,14 +14,14 @@ import {
 } from "./Main.style";
 
 export default function MainPageUI(props: any) {
-  console.log(props.data?.fetchUseditems);
+  // const usedItem = props.data?.fetchUseditems.slice(0, 8);
   return (
     <>
       <div>
         <Carrusel></Carrusel>
         <Arrival>New Arrival</Arrival>
         <ListWrapperMain>
-          {props.data?.fetchUseditems.map((el: any, i: any) => (
+          {props.data?.fetchUseditems.slice(0, 8).map((el: any, i: any) => (
             <ListWrapper id={el._id} key={i}>
               <ListBoxImg
                 id={el._id}
