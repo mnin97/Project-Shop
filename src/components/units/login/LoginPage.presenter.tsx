@@ -51,6 +51,7 @@ export default function LoginPageUI(props: any) {
             <LoginInput
               placeholder="영문+숫자 조합 8~16자리를 입력해주세요"
               onChange={props.onChangePassword}
+              type="password"
             />
           </InputBox>
           <LoginButton onClick={props.onClickLogin}>로그인</LoginButton>

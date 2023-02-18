@@ -347,3 +347,27 @@ export const CreateButton = styled.button`
   font-size: 15px;
   font-weight: 600;
 `;
+
+export const Edit2Button = styled.img`
+  margin-right: 20px;
+  cursor: pointer;
+`;
+
+export const EditDeleteWrapper = styled.div`
+  position: relative;
+  left: 459px;
+  bottom: 39px;
+`;
+
+export const DeleteButton2 = styled.img`
+  margin-bottom: 3px;
+  cursor: pointer;
+`;
+
+export const MainContents = styled.div`
+  font-size: 35px;
+  width: 92%;
+  height: 500px;
+  position: relative;
+  bottom: 186px;
+`;

@@ -36,7 +36,7 @@ export const ProductNameInput = styled.input`
   border: none;
   background: #e9e9e9;
   width: 80%;
-  color: #a9a9a9;
+  color: #000000;
   padding: 20px;
   font-size: 11px;
 `;

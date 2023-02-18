@@ -1,5 +1,5 @@
-import MainPage from "../src/components/units/main/Main.container";
+import BrandPage from "../src/components/units/brand/Brand.container";
 
 export default function Home() {
-  return <MainPage></MainPage>;
+  return <BrandPage></BrandPage>;
 }

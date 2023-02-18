@@ -5,7 +5,7 @@ export default function LayoutBanner() {
   const router = useRouter();
 
   const onClickLogo = () => {
-    router.push("/brand");
+    router.push("/");
   };
 
   return <LayoutBannerUI onClickLogo={onClickLogo} />;

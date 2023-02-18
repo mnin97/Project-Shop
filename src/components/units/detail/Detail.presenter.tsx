@@ -18,9 +18,12 @@ import {
   Day2,
   Day3,
   DeleteButton,
+  DeleteButton2,
   DetailBoy,
   DetailMan,
+  Edit2Button,
   EditButton,
+  EditDeleteWrapper,
   Emergency,
   EmergencyMent,
   ExplainMan,
@@ -29,6 +32,7 @@ import {
   ImageWrapper,
   InputWrapper,
   MainButtonWrapper,
+  MainContents,
   MainDeleteButton,
   MainInput,
   MapPosition,
@@ -46,6 +50,8 @@ import {
   TitleWrapper,
   Wrapper,
 } from "./Detail.style";
+import { v4 as uuidv4 } from "uuid";
+import DOMPurify from "dompurify";
 
 export default function DetailUI(props) {
   console.log(props.data?.fetchUseditem.images === "");
@@ -60,7 +66,7 @@ export default function DetailUI(props) {
                 <NoImageUploadWrapper src="/imageBox.png" />
               ) : (
                 <ImageUpload
-                  key={el}
+                  key={uuidv4()}
                   src={`https://storage.googleapis.com/${el}`}
                 />
               )
@@ -71,6 +77,16 @@ export default function DetailUI(props) {
           <ProductName>
             <div> {props.data?.fetchUseditem.name}</div>
           </ProductName>
+          <EditDeleteWrapper>
+            <Edit2Button
+              src="/Vector3.png"
+              onClick={props.onClickMoveToBoardEdit}
+            />
+            <DeleteButton2
+              src="/Vector.png"
+              onClick={props.onClickDeleteItem(props.data?.fetchUseditem._id)}
+            />
+          </EditDeleteWrapper>
         </TitleWrapper>
       </Wrapper>
       <ProductMan>
@@ -93,6 +109,13 @@ export default function DetailUI(props) {
       <DetailMan>
         <DetailBoy>DETAIL</DetailBoy>
       </DetailMan>
+      {props.data?.fetchUseditem.contents && (
+        <MainContents
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+          }}
+        ></MainContents>
+      )}
 
       <Emergency>
         <span>배송/교환/반품/AS 관련 유의사항</span>
@@ -102,9 +125,11 @@ export default function DetailUI(props) {
           안내사항보다 우선 적용됩니다.
         </EmergencyMent>
       </Emergency>
+
       <div>
         <MapPosition src="/map.png" />
       </div>
+
       <ExplainMan>
         상품별로 상품 특성 및 배송지에 따라 배송유형 및 소요기간이 달라집니다.
         상품의 배송비는 공급업체의 정책에 따라 다르오며 공휴일 및 휴일은 배송이
@@ -121,9 +146,6 @@ export default function DetailUI(props) {
         에이블리 고객센터를 통해 부탁드립니다. 상품불량에 의한 반품,교환, A/S,
         환불, 품질보증 및 피해보상 등에 관한 사항은
         소비자분쟁해결기준(공정거래위원회 고시)에 따라 받으실 수 있습니다.
-        <div>
-          <button onClick={props.onClickMoveToBoardEdit}>수정하기</button>
-        </div>
       </ExplainMan>
 
       <Ques>

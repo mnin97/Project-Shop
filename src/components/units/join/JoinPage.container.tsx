@@ -31,9 +31,9 @@ export default function JoinPage() {
       await createUser({
         variables: {
           createUserInput: {
-            email: String(email),
-            password: String(password),
-            name: String(name),
+            email: email,
+            password: password,
+            name: name,
           },
         },
       });

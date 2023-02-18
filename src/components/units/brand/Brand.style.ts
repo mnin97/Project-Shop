@@ -51,6 +51,7 @@ export const SubmitButton = styled.p`
   font-weight: 700;
   text-align: center;
   padding-top: 19px;
+  cursor: pointer;
 `;
 
 export const ListWrapper = styled.div`

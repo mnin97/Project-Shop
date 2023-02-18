@@ -19,6 +19,13 @@ export default function LayoutHeader() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   console.log(accessToken);
 
+  const logoutUser = async () => {
+    localStorage.removeItem("accessToken");
+    setAccessToken("");
+    alert("로그아웃 하셨습니다.");
+    location.reload();
+  };
+
   const router = useRouter();
 
   const onClickLogo = () => {
@@ -44,6 +51,7 @@ export default function LayoutHeader() {
       onClickLogo={onClickLogo}
       onClickMoveToLogin={onClickMoveToLogin}
       onClickMoveToJoin={onClickMoveToJoin}
+      logoutUser={logoutUser}
     />
   );
 }

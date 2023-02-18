@@ -9,6 +9,7 @@ import {
   IMutationUpdateUseditemArgs,
   IUpdateUseditemInput,
 } from "../../../commons/types/generated/types";
+import { FETCH_USED_ITEMS } from "../main/Main.queries";
 
 import CreateUI from "./Create.presenter";
 
@@ -99,6 +100,11 @@ export default function Create(props) {
             images: [...fileUrls],
           },
         },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEMS,
+          },
+        ],
       });
       console.log(result);
       router.push("/main");
@@ -135,6 +141,11 @@ export default function Create(props) {
           updateUseditemInput,
           useditemId: String(router.query.productId),
         },
+        refetchQueries: [
+          {
+            query: FETCH_USED_ITEMS,
+          },
+        ],
       });
       console.log(result);
       void router.push(`/main/${router.query.productId}`);
@@ -155,7 +166,7 @@ export default function Create(props) {
   };
 
   const onChangeContents = (event: any) => {
-    setContents("");
+    setContents(event);
   };
 
   const onChangePrice = (event: any) => {

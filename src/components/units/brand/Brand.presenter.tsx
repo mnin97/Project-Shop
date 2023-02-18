@@ -65,7 +65,6 @@ export default function BrandPageUI(props: any) {
             pageStart={0}
             loadMore={props.onLoadMore}
             hasMore={true}
-            useWindow={false}
           >
             <ListWrapperMain>
               {props.data?.fetchUseditems.map((el: any, i: any) =>
