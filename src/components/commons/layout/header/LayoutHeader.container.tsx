@@ -1,6 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
 
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../../commons/stores";
 import { IQuery } from "../../../../commons/types/generated/types";
@@ -11,6 +12,9 @@ const FETCH_USER_LOGGED_IN = gql`
     fetchUserLoggedIn {
       email
       name
+      userPoint {
+        amount
+      }
     }
   }
 `;
@@ -18,6 +22,10 @@ const FETCH_USER_LOGGED_IN = gql`
 export default function LayoutHeader() {
   const [accessToken, setAccessToken] = useRecoilState(accessTokenState);
   console.log(accessToken);
+  const [isOpen, setIsOpen] = useState(false);
+  const handleCradit = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   const logoutUser = async () => {
     localStorage.removeItem("accessToken");
@@ -52,6 +60,8 @@ export default function LayoutHeader() {
       onClickMoveToLogin={onClickMoveToLogin}
       onClickMoveToJoin={onClickMoveToJoin}
       logoutUser={logoutUser}
+      isOpen={isOpen}
+      handleCradit={handleCradit}
     />
   );
 }

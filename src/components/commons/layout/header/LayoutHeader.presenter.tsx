@@ -1,4 +1,6 @@
+import CreaditModal from "../../../units/\bPayment/Creadit.index";
 import {
+  ChargeWrapper,
   InnerButton,
   InnerLogo,
   InnerWrapper,
@@ -10,9 +12,15 @@ export default function LayoutHeaderUI(props: any) {
   console.log(props.data?.fetchUserLoggedIn.name);
   return (
     <Wrapper>
+      <CreaditModal
+        isOpen={props.isOpen}
+        infoUser={props?.infoUser}
+        setIsOpen={props.setIsOpen}
+        handleCradit={props.handleCradit}
+      />
       <InnerWrapper>
         <InnerLogo onClick={props.onClickLogo}>DINGCO</InnerLogo>
-        <div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
           <InnerButton onClick={props.onClickMoveToLogin}>
             {props.data?.fetchUserLoggedIn.name ? (
               <span>{props.data?.fetchUserLoggedIn.name}</span>
@@ -21,11 +29,23 @@ export default function LayoutHeaderUI(props: any) {
             )}
           </InnerButton>
           {props.data?.fetchUserLoggedIn.name ? (
-            <InnerButton onClick={props.logoutUser}>로그아웃</InnerButton>
+            <>
+              <ChargeWrapper>
+                <span>포인트 &nbsp;</span>
+                <span>
+                  &nbsp;{props.data?.fetchUserLoggedIn.userPoint.amount} P
+                </span>
+                <div onClick={props.handleCradit}>충전</div>
+              </ChargeWrapper>
+
+              <InnerButton onClick={props.logoutUser}>로그아웃</InnerButton>
+            </>
           ) : (
-            ""
+            <InnerButton onClick={props.onClickMoveToJoin}>
+              회원가입
+            </InnerButton>
           )}
-          <InnerButton onClick={props.onClickMoveToJoin}>회원가입</InnerButton>
+
           <InnerButton>장바구니</InnerButton>
         </div>
       </InnerWrapper>

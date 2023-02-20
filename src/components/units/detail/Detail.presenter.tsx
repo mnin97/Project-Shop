@@ -31,6 +31,9 @@ import {
   ImageUpload,
   ImageWrapper,
   InputWrapper,
+  LikeBtn,
+  LikeBtnWrapper,
+  LikeCount,
   MainButtonWrapper,
   MainContents,
   MainDeleteButton,
@@ -52,6 +55,7 @@ import {
 } from "./Detail.style";
 import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 
 export default function DetailUI(props) {
   console.log(props.data?.fetchUseditem.images === "");
@@ -93,8 +97,12 @@ export default function DetailUI(props) {
         <PriceName>판매가</PriceName>
         <Price> {props.data?.fetchUseditem.price} 원</Price>
         <MyPage>MY</MyPage>
-        <Heart src="/heart.png" />
-        <span>Product</span>
+        <LikeBtnWrapper>
+          <Heart onClick={props.onClickLikeProduct} src="/heart.png" />
+          <LikeCount>{props.data?.fetchUseditem.pickedCount}</LikeCount>
+
+          <span>Product</span>
+        </LikeBtnWrapper>
       </ProductMan>
       <ProductDes>
         <article>{props.data?.fetchUseditem.remarks}</article>

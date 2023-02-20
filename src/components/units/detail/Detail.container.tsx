@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import {
   IMutation,
   IMutationDeleteUseditemArgs,
+  IMutationToggleUseditemPickArgs,
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../commons/types/generated/types";
@@ -22,6 +23,12 @@ export const FETCH_USED_ITEM = gql`
       images
       pickedCount
     }
+  }
+`;
+
+const TOGGLE_USED_ITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
   }
 `;
 
@@ -47,6 +54,11 @@ export default function Detail() {
     Pick<IMutation, "deleteUseditem">,
     IMutationDeleteUseditemArgs
   >(DELETE_USED_ITEM);
+
+  const [toggleUseditemPick] = useMutation<
+    Pick<IMutation, "toggleUseditemPick">,
+    IMutationToggleUseditemPickArgs
+  >(TOGGLE_USED_ITEM_PICK);
 
   const { data } = useQuery<
     Pick<IQuery, "fetchUseditem">,
@@ -81,6 +93,21 @@ export default function Detail() {
     }
   };
 
+  const onClickLikeProduct = async () => {
+    // if (typeof router.query.boardId !== "string") return;
+    await toggleUseditemPick({
+      variables: { useditemId: router.query.productId },
+      refetchQueries: [
+        {
+          query: FETCH_USED_ITEM,
+          variables: {
+            useditemId: router.query.productId,
+          },
+        },
+      ],
+    });
+  };
+
   return (
     <DetailUI
       data={data}
@@ -88,6 +115,7 @@ export default function Detail() {
       fileUrls={fileUrls}
       onChangeFileUrls={onChangeFileUrls}
       onClickDeleteItem={onClickDeleteItem}
+      onClickLikeProduct={onClickLikeProduct}
     ></DetailUI>
   );
 }

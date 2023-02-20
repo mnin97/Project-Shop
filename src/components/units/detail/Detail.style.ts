@@ -1,5 +1,10 @@
+import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { ssrEntries } from "next/dist/build/webpack/plugins/middleware-plugin";
+
+interface IButtonIsActive {
+  isActive: boolean;
+}
 
 export const Wrapper = styled.div`
   display: flex;
@@ -370,4 +375,16 @@ export const MainContents = styled.div`
   height: 500px;
   position: relative;
   bottom: 186px;
+`;
+
+export const LikeBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left: 586px;
+  bottom: 21px;
+`;
+
+export const LikeCount = styled.div`
+  padding-right: 15px;
 `;

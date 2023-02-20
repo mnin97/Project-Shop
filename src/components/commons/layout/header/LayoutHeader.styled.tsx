@@ -30,3 +30,9 @@ export const InnerButton = styled.span`
   color: black;
   cursor: pointer;
 `;
+
+export const ChargeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 30px;
+`;
