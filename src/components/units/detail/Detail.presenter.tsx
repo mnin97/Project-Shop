@@ -10,6 +10,8 @@ import {
   Comment3,
   CommentButton,
   CommentButtonWrapper,
+  CommentMan,
+  CommentManWrapper,
   CommentName,
   CommentWrapper,
   CommentWrapper2,
@@ -56,6 +58,10 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import DOMPurify from "dompurify";
 import { HeartFilled, HeartOutlined } from "@ant-design/icons";
+import CommentWrite from "../comment/write/CommnetWrite.container";
+import CommentList from "../comment/lists/ComentList.container";
+import InfiniteScroll from "react-infinite-scroller";
+import Recomment from "../comment/recomment/recomment.container";
 
 export default function DetailUI(props) {
   console.log(props.data?.fetchUseditem.images === "");
@@ -159,7 +165,7 @@ export default function DetailUI(props) {
       <Ques>
         <p>Q & A</p>
       </Ques>
-      <div>
+      {/* <div>
         <Comment placeholder="내용을 입력해주세요." />
       </div>
       <CommentButtonWrapper>
@@ -190,11 +196,22 @@ export default function DetailUI(props) {
       </CommentWrapper2>
       <InputWrapper>
         <MainInput placeholder="내용을 입력해주세요." />
-      </InputWrapper>
-      <MainButtonWrapper>
+      </InputWrapper> */}
+
+      <CommentWrite />
+      <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={true}>
+        <CommentManWrapper>
+          <CommentMan>
+            <CommentList />
+          </CommentMan>
+        </CommentManWrapper>
+      </InfiniteScroll>
+      <Recomment />
+
+      {/* <MainButtonWrapper>
         <MainDeleteButton>취소하기</MainDeleteButton>
         <CreateButton>작성하기</CreateButton>
-      </MainButtonWrapper>
+      </MainButtonWrapper> */}
     </>
   );
 }

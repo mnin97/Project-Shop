@@ -12,6 +12,7 @@ const FETCH_USER_LOGGED_IN = gql`
     fetchUserLoggedIn {
       email
       name
+      _id
       userPoint {
         amount
       }
@@ -51,7 +52,7 @@ export default function LayoutHeader() {
   const { data } =
     useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
   console.log(data);
-  // console.log(data?.fetchUserLoggedIn.name);s
+  // console.log(data?.fetchUserLoggedIn.name);
 
   return (
     <LayoutHeaderUI

@@ -58,12 +58,6 @@ export const UPLOAD_FILE = gql`
 export default function Create(props) {
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
 
-  const onChangeFileUrls = (fileUrl: string, index: number) => {
-    const newFileUrls = [...fileUrls];
-    newFileUrls[index] = fileUrl;
-    setFileUrls(newFileUrls);
-  };
-
   useEffect(() => {
     if (props.data?.fetchUseditem.images?.length) {
       setFileUrls([...props.data?.fetchUseditem.images]);
@@ -114,6 +108,10 @@ export default function Create(props) {
   };
 
   const onClickUpdate = async (event: string) => {
+    const currentFiles = JSON.stringify(fileUrls); //스트링으로 바꿔서 둘을 비교해야한다 why? 둘다 주소라 다른주소이기 때문에 비교가 불가능하기떄문.
+    const defaultFiles = JSON.stringify(props.data?.fetchUseditem.images);
+
+    const isChangedFiles = currentFiles !== defaultFiles;
     // if (
     //   !data.name &&
     //   !data.remarks &&
@@ -133,6 +131,7 @@ export default function Create(props) {
     if (contents) updateUseditemInput.contents = contents;
     if (price) updateUseditemInput.price = Number(price);
     if (tags) updateUseditemInput.tags = tags;
+    if (isChangedFiles) updateUseditemInput.images = fileUrls;
     // if (data.images) updateUseditemInput.images = data.images;
 
     try {
@@ -171,6 +170,12 @@ export default function Create(props) {
 
   const onChangePrice = (event: any) => {
     setPrice(event.currentTarget.value);
+  };
+
+  const onChangeFileUrls = (fileUrl: string, index: number) => {
+    const newFileUrls = [...fileUrls];
+    newFileUrls[index] = fileUrl;
+    setFileUrls(newFileUrls);
   };
 
   return (

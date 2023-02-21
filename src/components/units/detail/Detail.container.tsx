@@ -8,6 +8,7 @@ import {
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../commons/types/generated/types";
+import Recomment from "../comment/recomment/recomment.container";
 import { FETCH_USED_ITEMS } from "../main/Main.queries";
 import DetailUI from "./Detail.presenter";
 
@@ -108,6 +109,10 @@ export default function Detail() {
     });
   };
 
+  const onClickReComment = () => {
+    <Recomment />;
+  };
+
   return (
     <DetailUI
       data={data}
@@ -116,6 +121,7 @@ export default function Detail() {
       onChangeFileUrls={onChangeFileUrls}
       onClickDeleteItem={onClickDeleteItem}
       onClickLikeProduct={onClickLikeProduct}
+      onClickReComment={onClickReComment}
     ></DetailUI>
   );
 }
