@@ -9,8 +9,8 @@ import {
 import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../../../commons/hooks/queries/useFetchUseditemQuestionAnswers";
 import { DELETE_USED_ITEM_ANSWER } from "../../../commons/hooks/mutation/useDeleteUseditemQuestionAnswer";
 import CommentWrite from "../write/CommnetWrite.container";
+import AnswerWrite from "../answer/Answer.container";
 import {
-  AnswerDay,
   AnswerDeleteButton,
   AnswerEditButton,
   CommenAnswertWrapper,
@@ -27,6 +27,7 @@ export default function AnswerListItemUI(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [isUpdateId, setIsUpdateId] = useState("");
+
   console.log(props.el);
   const [infoUser] = useRecoilState(infoUserState);
 
@@ -37,6 +38,7 @@ export default function AnswerListItemUI(props) {
 
   const onClickUpdateComment = (updateId: string) => (event) => {
     setIsUpdateId(updateId);
+    setIsEdit((prev) => !prev);
   };
 
   const onDeleteItemQuestionAnswer =
@@ -93,10 +95,11 @@ export default function AnswerListItemUI(props) {
           </CommenAnswertWrapper>
         </>
       ) : (
-        <CommentWrite
+        <AnswerWrite
           defaultValue={props.el?.contents}
-          useditemQuestionId={isUpdateId}
-          isEdit={true}
+          useItemQuestionAnswerId={isUpdateId}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
           onClickUpdateComment={onClickUpdateComment}
         />
       )}

@@ -11,6 +11,7 @@ import {
 import { UPDATE_USED_ITEM_QUESTION_ANSWER } from "../../../commons/hooks/mutation/useUpdateUseditemQuestionAnswer";
 import { FETCH_USED_ITEM_QUESTION_ANSWERS } from "../answerList/AnswerList.container";
 import AnswerUI from "./Answer.presenter";
+import { IUpdateUseditemQuestionAnswerInput } from "./AnswerWrite.types";
 
 export const CREATE_USER_ITEM_QUESTION_ANSWER = gql`
   mutation createUseditemQuestionAnswer(
@@ -27,6 +28,8 @@ export const CREATE_USER_ITEM_QUESTION_ANSWER = gql`
 `;
 
 export default function AnswerWrite(props) {
+  // console.log(props.usedupdateId);
+
   const [contents, setContents] = useState("");
   const router = useRouter();
   const [createUseditemQuestionAnswer] = useMutation<
@@ -39,16 +42,20 @@ export default function AnswerWrite(props) {
     IMutationUpdateUseditemQuestionAnswerArgs
   >(UPDATE_USED_ITEM_QUESTION_ANSWER);
 
-  const updateAnswer = async (data: any, useditemQuestionAnswerId: any) => {
+  const updateAnswer = async () => {
+    const updateUseditemQuestionAnswerInput: IUpdateUseditemQuestionAnswerInput =
+      {};
+    if (String(contents))
+      updateUseditemQuestionAnswerInput.contents = String(contents);
     try {
       await updateUseditemQuestionAnswer({
         variables: {
-          useditemQuestionAnswerId,
-          updateUseditemQuestionAnswerInput: {
-            ...data,
-          },
+          useditemQuestionAnswerId: props.useItemQuestionAnswerId,
+          updateUseditemQuestionAnswerInput,
         },
       });
+      props.setIsEdit((prev) => !prev);
+      props.onClickOpenAnswer;
     } catch (error) {
       if (error instanceof Error) alert(error.message);
     }
@@ -89,6 +96,9 @@ export default function AnswerWrite(props) {
       onClickWrite={onClickWrite}
       updateAnswer={updateAnswer}
       onChangeContents={onChangeContents}
+      updateId={props.isupdateId}
+      isEdit={props.isEdit}
+      onClickUpdateComment={props.onClickUpdateComment}
     ></AnswerUI>
   );
 }

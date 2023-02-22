@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { HeartOutlined } from "@ant-design/icons";
 
 export const ListWrapperMain = styled.div`
-  width: 100%;
+  width: 70%;
 
   display: flex;
 
@@ -12,7 +12,7 @@ export const ListWrapperMain = styled.div`
   margin-bottom: 75px;
 
   padding: 0 40px;
-
+  margin: 0 auto;
   justify-content: space-around;
 `;
 

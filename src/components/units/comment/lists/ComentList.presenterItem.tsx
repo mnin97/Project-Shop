@@ -99,12 +99,18 @@ export default function CommentListItemUI(props: any) {
         <CommentWrite
           defaultValue={props.el?.contents}
           useditemQuestionId={isUpdateId}
-          isEdit={true}
           onClickUpdateComment={onClickUpdateComment}
         />
       )}{" "}
       <AnswerList useditemQuestionId={props.el._id} />
-      {isanswer ? <AnswerWrite useditemQuestionId={props.el._id} /> : <></>}
+      {isanswer ? (
+        <AnswerWrite
+          onClickOpenAnswer={onClickOpenAnswer}
+          useditemQuestionId={props.el._id}
+        />
+      ) : (
+        <></>
+      )}
     </>
   );
 }

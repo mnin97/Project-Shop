@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const CommentAnswer = styled.input`
   background: #e9e9e9;
-  width: 1050px;
+  width: 1034px;
   border: none;
   height: 200px;
   padding-left: 35px;
@@ -10,7 +10,7 @@ export const CommentAnswer = styled.input`
 `;
 
 export const CommentAnswerButtonWrapper = styled.div`
-  width: 1050px;
+  width: 1034px;
   display: flex;
   justify-content: flex-end;
   border-bottom: 1px solid #555555;

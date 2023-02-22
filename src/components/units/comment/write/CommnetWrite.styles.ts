@@ -26,6 +26,8 @@ export const CommentButton = styled.button`
   color: #ffffff;
   font-size: 18px;
   font-weight: 600;
+  position: relative;
+  top: 7px;
 `;
 
 export const MainDeleteButton = styled.button`

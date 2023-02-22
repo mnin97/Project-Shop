@@ -13,12 +13,24 @@ import {
   Title,
 } from "./Main.style";
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import LayoutCarousel from "../carousel/carousel.presenter";
+
 export default function MainPageUI(props: any) {
+  const setting = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
   // const usedItem = props.data?.fetchUseditems.slice(0, 8);
   return (
     <>
       <div>
-        <Carrusel></Carrusel>
+        <LayoutCarousel></LayoutCarousel>
         <Arrival>New Arrival</Arrival>
         <ListWrapperMain>
           {props.data?.fetchUseditems.slice(0, 8).map((el: any, i: any) => (
