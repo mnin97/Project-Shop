@@ -15,3 +15,16 @@ export const infoUserState = atom({
   key: "infoUserState",
   default: {},
 });
+
+export const visitedPageState = atom({
+  key: "visitedPageState",
+  default: "",
+});
+
+export const restoreAccessTokenLoadable = selector({
+  key: "restoreAccessTokenLoadable",
+  get: async () => {
+    const newAccessToken = await getAccessToken();
+    return newAccessToken;
+  },
+});

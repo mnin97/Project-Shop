@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const CommentWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: 96%;
   padding-top: 25px;
   justify-content: space-between;
 `;

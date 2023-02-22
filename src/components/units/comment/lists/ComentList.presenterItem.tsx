@@ -9,6 +9,9 @@ import {
   IMutationDeleteUseditemQuestionArgs,
   IMutationUpdateUseditemQuestionArgs,
 } from "../../../../commons/types/generated/types";
+import AnswerWrite from "../answer/Answer.container";
+import AnswerList from "../answerList/AnswerList.container";
+
 import CommentWrite from "../write/CommnetWrite.container";
 
 import {
@@ -28,6 +31,7 @@ export default function CommentListItemUI(props: any) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [isUpdateId, setIsUpdateId] = useState("");
+  const [isanswer, setIsAnswer] = useState(false);
 
   const [infoUser] = useRecoilState(infoUserState);
 
@@ -45,7 +49,10 @@ export default function CommentListItemUI(props: any) {
         refetchQueries: [
           {
             query: FETCH_USEDITEM_QUESTION,
-            variables: { useditemQuestionId: router.query.productId },
+            variables: {
+              useditemId: String(router.query.productId),
+              page: 1,
+            },
           },
         ],
       });
@@ -56,6 +63,10 @@ export default function CommentListItemUI(props: any) {
 
   const onClickUpdateComment = (updateId: string) => (event) => {
     setIsUpdateId(updateId);
+  };
+
+  const onClickOpenAnswer = () => {
+    setIsAnswer((prev) => !prev);
   };
 
   return (
@@ -76,7 +87,11 @@ export default function CommentListItemUI(props: any) {
                 <DeleteButton src="/Vector.png" onClick={onClickDelete} />
               </>
             ) : (
-              <img src="/Vector4.png" />
+              <img
+                src="/Vector4.png"
+                style={{ cursor: "pointer" }}
+                onClick={onClickOpenAnswer}
+              />
             )}
           </CommentWrapper>
         </>
@@ -87,7 +102,9 @@ export default function CommentListItemUI(props: any) {
           isEdit={true}
           onClickUpdateComment={onClickUpdateComment}
         />
-      )}
+      )}{" "}
+      <AnswerList useditemQuestionId={props.el._id} />
+      {isanswer ? <AnswerWrite useditemQuestionId={props.el._id} /> : <></>}
     </>
   );
 }

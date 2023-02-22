@@ -1,7 +1,7 @@
 import { useAuth } from "../../src/components/commons/hooks/customs/useAuth";
-import CreaditModal from "../../src/components/units/creadit/Creadit.index";
+import BrandPage from "../../src/components/units/brand/Brand.container";
 
 export default function CreaditPage() {
   useAuth();
-  return <CreaditModal />;
+  return <BrandPage />;
 }

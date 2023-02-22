@@ -8,7 +8,8 @@ import {
   IQuery,
   IQueryFetchUseditemArgs,
 } from "../../../commons/types/generated/types";
-import Recomment from "../comment/recomment/recomment.container";
+import { useCreatePointTransactionOfBuyingAndSelling } from "../../commons/hooks/mutation/useCreatePointTransactionOfBuyingAndSelling";
+
 import { FETCH_USED_ITEMS } from "../main/Main.queries";
 import DetailUI from "./Detail.presenter";
 
@@ -16,13 +17,27 @@ export const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
       _id
-      contents
-      remarks
       name
+      remarks
+      contents
       price
       tags
       images
       pickedCount
+      createdAt
+      useditemAddress {
+        zipcode
+        address
+        lng
+        lat
+      }
+      seller {
+        _id
+        name
+        picture
+        email
+      }
+      soldAt
     }
   }
 `;
@@ -40,6 +55,8 @@ const DELETE_USED_ITEM = gql`
 `;
 
 export default function Detail() {
+  const { createPointTransactionOfBuyingAndSellingSubmit } =
+    useCreatePointTransactionOfBuyingAndSelling();
   const [fileUrls, setFileUrls] = useState(["", "", ""]);
   const onClickMoveToBoardEdit = () => {
     if (typeof router.query.productId !== "string") {
@@ -109,8 +126,8 @@ export default function Detail() {
     });
   };
 
-  const onClickReComment = () => {
-    <Recomment />;
+  const onClickBuy = (useditemId) => () => {
+    void createPointTransactionOfBuyingAndSellingSubmit(useditemId);
   };
 
   return (
@@ -121,7 +138,7 @@ export default function Detail() {
       onChangeFileUrls={onChangeFileUrls}
       onClickDeleteItem={onClickDeleteItem}
       onClickLikeProduct={onClickLikeProduct}
-      onClickReComment={onClickReComment}
+      onClickBuy={onClickBuy}
     ></DetailUI>
   );
 }

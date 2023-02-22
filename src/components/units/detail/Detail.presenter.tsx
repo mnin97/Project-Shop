@@ -61,7 +61,6 @@ import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import CommentWrite from "../comment/write/CommnetWrite.container";
 import CommentList from "../comment/lists/ComentList.container";
 import InfiniteScroll from "react-infinite-scroller";
-import Recomment from "../comment/recomment/recomment.container";
 
 export default function DetailUI(props) {
   console.log(props.data?.fetchUseditem.images === "");
@@ -72,7 +71,7 @@ export default function DetailUI(props) {
           {props.data?.fetchUseditem.images
             .slice(0, 1)
             .map((el: string) =>
-              props.data?.fetchUseditem.images[0] === "" ? (
+              props.data?.fetchUseditem?.images[0] === true ? (
                 <NoImageUploadWrapper src="/imageBox.png" />
               ) : (
                 <ImageUpload
@@ -117,7 +116,9 @@ export default function DetailUI(props) {
         <Tag>{props.data?.fetchUseditem.tags}</Tag>
       </TagName>
       <ButtonWrapper>
-        <BuyButton>BUY NOW</BuyButton>
+        <BuyButton onClick={props.onClickBuy(props.data?.fetchUseditem._id)}>
+          BUY NOW
+        </BuyButton>
         <ShoppingBagButton>SHOPPING BAG</ShoppingBagButton>
       </ButtonWrapper>
       <DetailMan>
@@ -206,7 +207,6 @@ export default function DetailUI(props) {
           </CommentMan>
         </CommentManWrapper>
       </InfiniteScroll>
-      <Recomment />
 
       {/* <MainButtonWrapper>
         <MainDeleteButton>취소하기</MainDeleteButton>

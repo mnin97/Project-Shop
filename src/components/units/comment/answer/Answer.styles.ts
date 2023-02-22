@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const Comment = styled.input`
+export const CommentAnswer = styled.input`
   background: #e9e9e9;
   width: 1050px;
   border: none;
@@ -9,7 +9,7 @@ export const Comment = styled.input`
   padding-bottom: 130px;
 `;
 
-export const CommentButtonWrapper = styled.div`
+export const CommentAnswerButtonWrapper = styled.div`
   width: 1050px;
   display: flex;
   justify-content: flex-end;
@@ -18,7 +18,7 @@ export const CommentButtonWrapper = styled.div`
   padding-top: 24px;
 `;
 
-export const CommentButton = styled.button`
+export const CommentAnswerButton = styled.button`
   width: 140px;
   height: 50px;
   border: none;
@@ -28,7 +28,7 @@ export const CommentButton = styled.button`
   font-weight: 600;
 `;
 
-export const MainDeleteButton = styled.button`
+export const MainAnswerDeleteButton = styled.button`
   width: 150px;
   margin-top: 6px;
   height: 53px;

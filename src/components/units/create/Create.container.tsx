@@ -89,7 +89,7 @@ export default function Create(props) {
             name: name,
             remarks: remarks,
             price: Number(price),
-            tags: tags,
+            tags: [tags],
             contents: contents,
             images: [...fileUrls],
           },

@@ -13,10 +13,10 @@ export default function LayoutHeaderUI(props: any) {
   return (
     <Wrapper>
       <CreaditModal
-        isOpen={props.isOpen}
+        isOpen={props?.isOpen}
         infoUser={props?.infoUser}
-        setIsOpen={props.setIsOpen}
-        handleCradit={props.handleCradit}
+        setIsOpen={props?.setIsOpen}
+        handleCradit={props?.handleCradit}
       />
       <InnerWrapper>
         <InnerLogo onClick={props.onClickLogo}>DINGCO</InnerLogo>
@@ -32,8 +32,8 @@ export default function LayoutHeaderUI(props: any) {
             <>
               <ChargeWrapper>
                 <span>포인트 &nbsp;</span>
-                <span>
-                  &nbsp;{props.data?.fetchUserLoggedIn.userPoint.amount} P
+                <span style={{ marginRight: "10px" }}>
+                  &nbsp;{props.data?.fetchUserLoggedIn.userPoint.amount}P
                 </span>
                 <div onClick={props.handleCradit}>충전</div>
               </ChargeWrapper>

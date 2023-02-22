@@ -6,6 +6,7 @@ import {
   IMutationCreateUseditemQuestionArgs,
   IMutationUpdateUseditemQuestionArgs,
 } from "../../../../commons/types/generated/types";
+import { FETCH_USEDITEM_QUESTION } from "../lists/CommentList.queries";
 import { IUpdateUseditemQuestionInput } from "./CommentWrite.types";
 
 import CommentWriteUI from "./CommnetWrite.presenter";
@@ -60,6 +61,15 @@ export default function CommentWrite(props) {
           createUseditemQuestionInput: { contents },
           useditemId: router.query.productId,
         },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTION,
+            variables: {
+              useditemId: String(router.query.productId),
+              page: 1,
+            },
+          },
+        ],
       });
       console.log(contents);
       alert("성공");
@@ -79,6 +89,15 @@ export default function CommentWrite(props) {
           useditemQuestionId: props.useditemQuestionId,
           updateUseditemQuestionInput,
         },
+        refetchQueries: [
+          {
+            query: FETCH_USEDITEM_QUESTION,
+            variables: {
+              useditemId: String(router.query.productId),
+              page: 1,
+            },
+          },
+        ],
       });
     } catch (error) {
       if (error instanceof Error) alert(error.message);

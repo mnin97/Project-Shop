@@ -2,12 +2,18 @@ import styled from "@emotion/styled";
 import { HeartOutlined } from "@ant-design/icons";
 
 export const ListWrapperMain = styled.div`
-  width: 1600px;
+  width: 100%;
+
   display: flex;
+
   flex-direction: row;
+
   flex-wrap: wrap;
   margin-bottom: 75px;
-  justify-content: center;
+
+  padding: 0 40px;
+
+  justify-content: space-around;
 `;
 
 export const Carrusel = styled.div`
@@ -25,7 +31,7 @@ export const Arrival = styled.p`
 `;
 
 export const ListWrapper = styled.div`
-  margin-right: 30px;
+  /* margin-right: 30px; */
   width: 300px;
 `;
 
@@ -40,7 +46,7 @@ export const ListBox = styled.div`
 export const ListBoxImg = styled.img`
   width: 300px;
   height: 400px;
-  margin-left: 30px;
+
   margin-bottom: 15px;
   margin-top: 30px;
 `;
@@ -57,7 +63,7 @@ export const Title = styled.span`
   margin-right: 5px;
 `;
 
-export const Price = styled.span`
+export const Price = styled.div`
   font-weight: 400;
   font-size: 20px;
 `;
@@ -79,6 +85,6 @@ export const Status = styled.p`
 
 export const HeartIcon = styled(HeartOutlined)`
   position: relative;
-  left: 303px;
-  bottom: 406px;
+  left: 266px;
+  bottom: 396px;
 `;

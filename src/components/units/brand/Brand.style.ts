@@ -8,6 +8,7 @@ export const ListWrapperMain = styled.div`
   flex-wrap: wrap;
   margin-bottom: 75px;
   justify-content: center;
+  cursor
 `;
 
 export const Carrusel = styled.div`
@@ -57,6 +58,7 @@ export const SubmitButton = styled.p`
 export const ListWrapper = styled.div`
   margin-right: 44px;
   width: 300px;
+  cursor: pointer;
 `;
 
 export const ListBox = styled.div`
@@ -87,7 +89,7 @@ export const Title = styled.span`
   margin-right: 5px;
 `;
 
-export const Price = styled.span`
+export const Price = styled.div`
   font-weight: 400;
   font-size: 20px;
 `;

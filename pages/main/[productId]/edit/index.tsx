@@ -5,6 +5,7 @@ import {
 } from "../../../../src/commons/types/generated/types";
 import { useRouter } from "next/router";
 import Create from "../../../../src/components/units/create/Create.container";
+import { useAuth } from "../../../../src/components/commons/hooks/customs/useAuth";
 
 const FETCH_USED_ITEM = gql`
   query fetchUseditem($useditemId: ID!) {
@@ -22,6 +23,7 @@ const FETCH_USED_ITEM = gql`
 `;
 
 export default function ProductEditPage() {
+  useAuth();
   const router = useRouter();
   // if (typeof router.query.useditemId !== "string") {
   //   console.log("잘못된 접근");

@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { accessTokenState } from "../../../commons/stores";
 import {
@@ -64,6 +64,7 @@ export default function LoginPage() {
   const onClickLogo = () => {
     router.push("/main");
   };
+
   return (
     <>
       <LoginPageUI

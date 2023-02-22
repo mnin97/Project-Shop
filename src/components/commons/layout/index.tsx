@@ -11,6 +11,7 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-x: clip;
 `;
 
 const HIDDEN_HEADERS = ["/Login", "/join"];

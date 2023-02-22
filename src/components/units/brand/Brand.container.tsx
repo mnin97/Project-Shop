@@ -1,11 +1,14 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
+import { Modal } from "antd";
 import {
   IQuery,
   IQueryFetchUseditemsArgs,
 } from "../../../commons/types/generated/types";
+import { useAuth } from "../../commons/hooks/customs/useAuth";
 import MainPageUI from "./Brand.presenter";
 import { FETCH_USED_ITEMS } from "./Brand.queries";
+import { useEffect } from "react";
 
 export default function BrandPage() {
   const router = useRouter();

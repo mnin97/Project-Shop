@@ -24,11 +24,14 @@ export const ImageUpload = styled.img`
 
 export const NoImageUploadWrapper = styled.img`
   width: 600px;
+  height: 600px;
 `;
 
 export const TitleWrapper = styled.div`
   position: absolute;
-  left: 809px;
+
+  left: 679px;
+  width: 519px;
 `;
 
 export const Category = styled.h4`
@@ -48,7 +51,7 @@ export const ProductMan = styled.div`
   height: 45px;
   position: relative;
   left: 327px;
-  bottom: 363px;
+  bottom: 314px;
   border-bottom: 3px solid #555555;
 `;
 
@@ -67,6 +70,7 @@ export const Heart = styled.img`
   padding-left: 7px;
   padding-right: 7px;
   width: 34px;
+  cursor: pointer;
 `;
 
 export const ProductDes = styled.div`
@@ -74,7 +78,7 @@ export const ProductDes = styled.div`
   height: 120px;
   position: relative;
   left: 271px;
-  bottom: 333px;
+  bottom: 292px;
   font-size: 20px;
   font-weight: 400;
 `;
@@ -360,7 +364,7 @@ export const Edit2Button = styled.img`
 
 export const EditDeleteWrapper = styled.div`
   position: relative;
-  left: 459px;
+  left: 641px;
   bottom: 39px;
 `;
 

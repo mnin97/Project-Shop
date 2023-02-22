@@ -8,5 +8,11 @@ export default function LayoutBanner() {
     router.push("/");
   };
 
-  return <LayoutBannerUI onClickLogo={onClickLogo} />;
+  const onClickBrand = () => {
+    router.push("/brand");
+  };
+
+  return (
+    <LayoutBannerUI onClickLogo={onClickLogo} onClickBrand={onClickBrand} />
+  );
 }

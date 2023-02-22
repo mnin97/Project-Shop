@@ -1,6 +1,7 @@
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import {
   IMutation,
   IMutationCreatePointTransactionOfLoadingArgs,
@@ -24,11 +25,11 @@ const CREATE_POINT_TRANSACTION_OF_LOADIng = gql`
 export default function CreaditModal(props) {
   const [isSelectLists, setIsSelectLists] = useState<boolean>(false);
   const [selectPrice, setSelectPrice] = useState<number>(0);
-  const router = useRouter();
   const [createPointTransactionOfLoading] = useMutation<
     Pick<IMutation, "createPointTransactionOfLoading">,
     IMutationCreatePointTransactionOfLoadingArgs
   >(CREATE_POINT_TRANSACTION_OF_LOADIng);
+  const router = useRouter();
 
   useEffect(() => {
     const jquery = document.createElement("script");
@@ -67,11 +68,11 @@ export default function CreaditModal(props) {
             },
             refetchQueries: [
               {
-                query: props.FETCH_USER_LOGGEDIN,
+                query: FETCH_USER_LOGGEDIN,
               },
             ],
           });
-          props.setIsOpen(false);
+          // props.setIsOpen(false);
           if (rsp.success) router.push("/");
         } else {
           // 결제 실패 시 로직,
@@ -125,7 +126,7 @@ export default function CreaditModal(props) {
               <button onClick={onSelectlist(2000)}>2,000</button>
             </li>
             <li>
-              <button onClick={onSelectlist(5000)}>5,000</button>
+              <button onClick={onSelectlist(500)}>5,000</button>
             </li>
           </ul>
         </S.CreaditSelectWrap>

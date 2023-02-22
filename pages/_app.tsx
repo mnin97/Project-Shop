@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const qqq = 3;
 
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <RecoilRoot>
         <ApolloSetting>
           <>

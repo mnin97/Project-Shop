@@ -7,13 +7,13 @@ export default function LayoutBannerUI(props: any) {
   return (
     <Wrapper>
       <NavigationBox>
-        <Navigation onClick={props.onClickLogo}>BRAND</Navigation>
-        <Navigation>CATEGORY</Navigation>
-        <Navigation>LIFE</Navigation>
-        <Navigation>BEAUTY</Navigation>
+        <Navigation onClick={props.onClickBrand}>BRAND</Navigation>
+        <Navigation onClick={props.onClickBrand}>CATEGORY</Navigation>
+        <Navigation onClick={props.onClickBrand}>LIFE</Navigation>
+        <Navigation onClick={props.onClickBrand}>BEAUTY</Navigation>
         <Navigation>|</Navigation>
-        <Navigation>#STYLE</Navigation>
-        <Navigation>EVENT</Navigation>
+        <Navigation onClick={props.onClickBrand}>#STYLE</Navigation>
+        <Navigation onClick={props.onClickBrand}>EVENT</Navigation>
       </NavigationBox>
     </Wrapper>
   );
