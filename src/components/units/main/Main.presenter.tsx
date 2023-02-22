@@ -31,7 +31,7 @@ export default function MainPageUI(props: any) {
     <>
       <div>
         <LayoutCarousel></LayoutCarousel>
-        <Arrival>New Arrival</Arrival>
+
         <ListWrapperMain>
           {props.data?.fetchUseditems.slice(0, 8).map((el: any, i: any) => (
             <ListWrapper id={el._id} key={i}>

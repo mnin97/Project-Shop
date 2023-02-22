@@ -90,14 +90,16 @@ export const LoginButton = styled.button`
   cursor: pointer;
 `;
 
-export const IdBox = styled.p`
+export const IdBox = styled.div`
   position: relative;
   right: 60px;
   top: 30px;
+  width: 45px;
 `;
 
-export const PBox = styled.p`
+export const PBox = styled.div`
   position: relative;
   right: 73px;
   top: 30px;
+  width: 56px;
 `;
