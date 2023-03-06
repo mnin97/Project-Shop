@@ -11,14 +11,16 @@
     <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&logoColor=white"/>
 </div>
 
-<details>
+<h2 style="padding-Top:20px">제가 구현한 기능들을 모아보았습니다.</h2>
 
-<summary>기능들</summary>
-
-<div markdown="1">
 <p style="padding:10px">로그인/로그아웃</p>
 <img src="https://user-images.githubusercontent.com/111506962/222953532-fed33398-1a26-4bdc-a13f-1422045b693d.gif"/>
+<p>AccessToken으로 로그인 페이지를 구현</p>
 <p style="padding:10px">목록/디테일</p>
-
-</div>
-</details>
+<img src="https://user-images.githubusercontent.com/111506962/223025777-8cdbb035-c59e-4619-bfb5-eb24e71fd1f4.gif" style="height:200px"/>
+<p>infinite-scroll을 활용한 목록페이지 구현 </p>
+<p style="padding:10px">등록</p>
+<img src="https://user-images.githubusercontent.com/111506962/223026204-03997611-7566-4153-8073-72db0a61063d.gif" style="height:200px"/>
+<p style="padding:10px">수정</p>
+<img src="https://user-images.githubusercontent.com/111506962/223026614-2daf4c46-2aa4-4f02-af73-21b2699592a8.gif" style="height:200px"/>
+<p>등록/수정페이지 구현 </p>
